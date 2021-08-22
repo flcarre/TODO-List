@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { RecoilRoot, atom } from "recoil";
+import Todo from "./Pages/Todo";
+
+const tasksDummy = [
+  { title: "Tasks title 1", desc: "task desc 1" },
+  { title: "Tasks title 2 ", desc: "task desc 2" },
+  { title: "Tasks title 3", desc: "task desc 3" },
+  { title: "Tasks title 4", desc: "task desc 4" },
+];
+
+export const todoTasksState = atom({
+  key: "todoTasksState",
+  default: tasksDummy,
+});
+
+export const doneTasksState = atom({
+  key: "doneTasksState",
+  default: tasksDummy,
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RecoilRoot>
+      <Todo />
+    </RecoilRoot>
   );
 }
 
